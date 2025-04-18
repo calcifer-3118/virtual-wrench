@@ -151,7 +151,6 @@ export default function Index() {
           </model-viewer>
         </div>
 
-        {/* 🚀 Launch CTA */}
         <div className="mt-14 animate-fade-in-up delay-500">
           <button className="px-10 py-4 text-lg font-bold rounded-full bg-gradient-to-r from-purple-500 to-pink-600 hover:from-pink-600 hover:to-purple-500 transition-all duration-300 shadow-xl hover:shadow-[0_0_25px_rgba(255,0,150,0.6)]">
             🚀 Launch Garage
