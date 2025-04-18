@@ -1,0 +1,46 @@
+from selenium import webdriver  
+from selenium.webdriver.chrome.service import Service  
+from selenium.webdriver.common.by import By  
+import time  
+import requests  
+import os  
+
+# Set up the WebDriver with the Service class  
+service = Service(r"C:\Users\dheer\Downloads\chromedriver-win64\chromedriver-win64\chromedriver.exe")  # Update with your path  
+driver = webdriver.Chrome(service=service)  
+
+url = 'https://www.indianmotorcycle.com/en-in/build-color/?selectedbrand=scout&CatalogContentId=833318__CatalogContent'  
+driver.get(url)  
+
+# Wait for JavaScript to load content (adjust time if necessary)  
+time.sleep(30)  # Increased wait time to ensure all elements load  
+
+# Create a directory for saved .glb files  
+os.makedirs('glb_files', exist_ok=True)  
+
+# Check the entire page source for .glb links  
+page_source = driver.page_source  
+
+# Parse for .glb links in the page source  
+import re  # You can use regex to find links more flexibly  
+
+# Find all occurrences of .glb links in the page source  
+print(page_source)
+glb_links = re.findall(r'(https?://[^\s]+\.glb[^"\s]*)', page_source)  
+
+# Following link extraction, download each .glb file found  
+for file_url in glb_links:  
+    # Download the .glb file  
+    file_name = os.path.join('glb_files', file_url.split('/')[-1].split('?')[0])  # Remove query string for filename  
+    print(f'Downloading {file_name}...')  
+    try:  
+        with requests.get(file_url, stream=True) as r:  
+            r.raise_for_status()  # Raise an error for bad responses  
+            with open(file_name, 'wb') as f:  
+                for chunk in r.iter_content(chunk_size=8192):  
+                    f.write(chunk)  
+    except Exception as e:  
+        print(f"Failed to download {file_url}: {e}")  
+
+print('Download complete!')  
+driver.quit()  
