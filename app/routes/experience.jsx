@@ -10,18 +10,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import { useNavigate } from "react-router-dom";
 
+let fov = 70;
+
 function Loader() {
   return (
-    <Html center>
-      <div className="loader">
-        <div className="spinner" />
-        <p>Loading Garage...</p>
+    <div className="fixed w-full h-full top-0 left-0 bg-black bg-opacity-70 flex items-center justify-center z-990">
+      <div className="flex flex-col items-center justify-center bg-black bg-opacity-90 p-8 rounded-lg shadow-lg">
+        <div className="spinner mb-4 w-16 h-16 border-4 border-t-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
+        <p className="text-white text-lg font-semibold">Loading Garage...</p>
       </div>
-    </Html>
+    </div>
   );
 }
-
-let fov = 70;
 
 function GarageModel({ setModel }) {
   const { scene } = useGLTF("/design.glb");
@@ -524,69 +524,69 @@ function Experience() {
   const [model, setModel] = useState();
 
   return (
-    <motion.div
-      className="relative w-full h-screen"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1.5 }}
-    >
-      <Canvas
-        camera={{ position: [0, 2, 5], fov: 60 }}
-        shadows
-        gl={{ antialias: true }}
+    <Suspense fallback={<Loader />}>
+      <motion.div
+        className="relative w-full h-screen"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
       >
-        <color attach="background" args={["#0e0e10"]} />
-        <PerspectiveCamera
-          ref={cameraRef}
-          makeDefault
-          position={[0, 2, 3]}
-          rotation={[0, 0, 0]}
-          fov={fov}
-        />
+        <Canvas
+          camera={{ position: [0, 2, 5], fov: 60 }}
+          shadows
+          gl={{ antialias: true }}
+        >
+          <color attach="background" args={["#0e0e10"]} />
+          <PerspectiveCamera
+            ref={cameraRef}
+            makeDefault
+            position={[0, 2, 3]}
+            rotation={[0, 0, 0]}
+            fov={fov}
+          />
 
-        <pointLight
-          position={[0.5, 1.9, -1]}
-          scale={[7, 7, 7]}
-          intensity={1.5}
-          castShadow
-        />
-        <pointLight
-          position={[0.5, 1.9, -2.5]}
-          scale={[7, 7, 7]}
-          intensity={1.5}
-          castShadow
-        />
-        <pointLight
-          position={[-1.2, 1.9, -1]}
-          scale={[7, 7, 7]}
-          intensity={1.5}
-          castShadow
-        />
-        <pointLight
-          position={[-1.2, 1.9, -2.5]}
-          scale={[7, 7, 7]}
-          intensity={1.5}
-          castShadow
-        />
+          <pointLight
+            position={[0.5, 1.9, -1]}
+            scale={[7, 7, 7]}
+            intensity={1.5}
+            castShadow
+          />
+          <pointLight
+            position={[0.5, 1.9, -2.5]}
+            scale={[7, 7, 7]}
+            intensity={1.5}
+            castShadow
+          />
+          <pointLight
+            position={[-1.2, 1.9, -1]}
+            scale={[7, 7, 7]}
+            intensity={1.5}
+            castShadow
+          />
+          <pointLight
+            position={[-1.2, 1.9, -2.5]}
+            scale={[7, 7, 7]}
+            intensity={1.5}
+            castShadow
+          />
 
-        <rectAreaLight
-          position={[0, 7, 0]}
-          scale={[10, 4, 10]}
-          intensity={1.5}
-          rotation={[-Math.PI / 2, 0, 0]}
-        />
-        <rectAreaLight
-          position={[0, -2, 0]}
-          scale={[10, 4, 10]}
-          intensity={1.5}
-          rotation={[Math.PI / 2, 0, 0]}
-        />
-        <Suspense fallback={<Loader />}>
+          <rectAreaLight
+            position={[0, 7, 0]}
+            scale={[10, 4, 10]}
+            intensity={1.5}
+            rotation={[-Math.PI / 2, 0, 0]}
+          />
+          <rectAreaLight
+            position={[0, -2, 0]}
+            scale={[10, 4, 10]}
+            intensity={1.5}
+            rotation={[Math.PI / 2, 0, 0]}
+          />
           <GarageModel setModel={setModel} />
-        </Suspense>
-      </Canvas>
-      <HUDOverlay cameraRef={cameraRef} model={model} />
-    </motion.div>
+        </Canvas>
+        <HUDOverlay cameraRef={cameraRef} model={model} />
+      </motion.div>
+    </Suspense>
   );
 }
 
