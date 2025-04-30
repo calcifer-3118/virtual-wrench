@@ -173,15 +173,14 @@ function HUDOverlay({ cameraRef, model }) {
         name: "OEM Fuel Tank Assembly",
         brand: "Indian Motorcycle",
         price: "₹1,02,000",
-        image:
-          "https://cdn1.polaris.com/globalassets/indian/2021/model/vehicles/bobber-dark-horse/gallery/chief-bobber-dark-horse-black-smoke-1.jpg",
+        image: "https://m.media-amazon.com/images/I/71pnkVJ4YxL._SL1500_.jpg",
       },
       {
         name: "Custom Painted Tank",
         brand: "Custom Dynamics",
         price: "₹1,53,000",
         image:
-          "https://www.americanbagger.com/wp-content/uploads/2022/03/custompainttank.jpg",
+          "https://i.pinimg.com/736x/6d/77/bc/6d77bcd80ebba30ab27921311fb01d12.jpg",
       },
     ],
     TYRE: [
@@ -190,29 +189,30 @@ function HUDOverlay({ cameraRef, model }) {
         brand: "Michelin",
         price: "₹21,300",
         image:
-          "https://m.media-amazon.com/images/I/61skdlP7UvL._AC_UF894,1000_QL80_.jpg",
+          "https://i.pinimg.com/736x/78/f8/5d/78f85da4d13b2d6db4a8a4f485d591e2.jpg",
       },
       {
         name: "Dunlop Elite 4",
         brand: "Dunlop",
         price: "₹19,600",
-        image: "https://images.carid.com/dunlop/items/elite-4.jpg",
+        image:
+          "https://i.pinimg.com/736x/2e/48/f6/2e48f69c1464eb2744efe63c3ab47ff8.jpg",
       },
     ],
-    MIRROR: [
+    ACCESSORIES: [
       {
         name: "Kuryakyn Spear Mirrors",
         brand: "Kuryakyn",
         price: "₹12,800",
         image:
-          "https://cdn.shopify.com/s/files/1/0266/6276/4597/products/546463_1200x1200.jpg",
+          "https://i.pinimg.com/736x/67/7e/dc/677edc029f23dc7ed6085fae19293c9f.jpg",
       },
       {
         name: "Arlen Ness Oval Mirrors",
         brand: "Arlen Ness",
         price: "₹11,050",
         image:
-          "https://cdn.bikebandit-images.com/product_images/arlen-ness-oval-mirror-black.jpg",
+          "https://i.pinimg.com/736x/6a/12/af/6a12afcfa3b1910d7d8a1773d2bb91ba.jpg",
       },
     ],
 
@@ -244,9 +244,9 @@ function HUDOverlay({ cameraRef, model }) {
       },
       fov: fov,
     },
-    MIRROR: {
+    ACCESSORIES: {
       pos: { x: 2, y: 1.8, z: -2 },
-      rot: { x: 10, y: 60, z: 0 },
+      rot: { w: 1, x: 0, y: -0.2831121617956065, z: 0 },
       fov: fov,
     },
     RIM: {
