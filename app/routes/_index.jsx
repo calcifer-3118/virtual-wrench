@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import "../styles.css";
+import { useNavigate } from "react-router-dom";
 
 export const meta = () => {
   return [
@@ -15,6 +16,8 @@ export default function Index() {
   useEffect(() => {
     import("@google/model-viewer");
   }, []);
+
+  const navigate = useNavigate();
 
   return (
     <main className="relative min-h-screen bg-[#0c0c0e] text-white overflow-hidden font-sans">
@@ -152,7 +155,10 @@ export default function Index() {
         </div>
 
         <div className="mt-14 animate-fade-in-up delay-500">
-          <button className="px-10 py-4 text-lg font-bold rounded-full bg-gradient-to-r from-purple-500 to-pink-600 hover:from-pink-600 hover:to-purple-500 transition-all duration-300 shadow-xl hover:shadow-[0_0_25px_rgba(255,0,150,0.6)]">
+          <button
+            className="px-10 py-4 text-lg font-bold rounded-full bg-gradient-to-r from-purple-500 to-pink-600 hover:from-pink-600 hover:to-purple-500 transition-all duration-300 shadow-xl hover:shadow-[0_0_25px_rgba(255,0,150,0.6)]"
+            onClick={() => navigate("/experience")}
+          >
             🚀 Launch Garage
           </button>
         </div>

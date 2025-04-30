@@ -12,12 +12,17 @@
   },
   "dependencies": {
     "@google/model-viewer": "^4.1.0",
+    "@react-three/drei": "^9.76.2",
+    "@react-three/fiber": "^8.13.4",
     "@remix-run/node": "^2.16.5",
     "@remix-run/react": "^2.16.5",
     "@remix-run/serve": "^2.16.5",
+    "framer-motion": "^12.9.2",
+    "gsap": "^3.12.7",
     "isbot": "^4.1.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "three": "^0.172.0"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.16.5",
